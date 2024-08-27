@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v4
 
-      # Setup Dart and Flutter
+      # Set up Dart and Flutter
       - uses: dart-lang/setup-dart@v1
         with:
-          flutter: true
+          flutter: true  # This installs the Flutter SDK along with Dart
 
       # Cache dependencies to speed up build times
       - name: Cache dependencies
@@ -27,17 +28,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pub-cache-
 
+      # Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: flutter format --output=none --set-exit-if-changed .
-
-      # Analyze Flutter project source
+      # Analyze project source
       - name: Analyze project source
         run: flutter analyze
 
-      # Run Flutter tests
+      # Run tests
       - name: Run tests
         run: flutter test

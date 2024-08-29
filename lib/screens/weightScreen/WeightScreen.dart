@@ -1,6 +1,5 @@
-import 'package:fitness_app_live/constants/color.dart';
+import '../../constants/color.dart';
 import 'package:flutter/material.dart';
-
 import '../../models/DetailPageButton.dart';
 import '../../models/DetailPageTitle.dart';
 

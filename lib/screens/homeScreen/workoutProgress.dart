@@ -1,7 +1,6 @@
 import 'package:calendar_slider/calendar_slider.dart';
-import 'package:fitness_app_live/constants/color.dart';
+import '../../constants/color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class workoutProgress extends StatefulWidget {
   const workoutProgress({super.key});

@@ -1,4 +1,4 @@
-package com.example.fitness_app_live
+package com.example.StayFit
 
 import io.flutter.embedding.android.FlutterActivity
 

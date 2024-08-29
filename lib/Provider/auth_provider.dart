@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fitness_app_live/provider/user_provider.dart';
+import '../provider/user_provider.dart';
 import 'package:http/http.dart' as http;
 
 import '../config.dart';

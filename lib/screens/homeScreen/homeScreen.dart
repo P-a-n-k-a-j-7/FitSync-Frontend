@@ -1,7 +1,5 @@
-import 'package:fitness_app_live/constants/color.dart';
-import 'package:fitness_app_live/constants/padding_margin.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import '../../constants/color.dart';
+import '../../constants/padding_margin.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

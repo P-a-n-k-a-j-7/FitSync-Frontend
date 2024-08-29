@@ -1,6 +1,6 @@
-import 'package:fitness_app_live/constants/color.dart';
-import 'package:fitness_app_live/models/DetailPageButton.dart';
-import 'package:fitness_app_live/models/DetailPageTitle.dart';
+import '../../constants/color.dart';
+import '../../models/DetailPageButton.dart';
+import '../../models/DetailPageTitle.dart';
 import 'package:flutter/material.dart';
 
 class GenderPage extends StatefulWidget {

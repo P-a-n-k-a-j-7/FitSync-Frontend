@@ -1,5 +1,5 @@
-import 'package:fitness_app_live/constants/padding_margin.dart';
-import 'package:fitness_app_live/screens/homeScreen/homeScreen.dart';
+import '../../constants/padding_margin.dart';
+import '../../screens/homeScreen/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/color.dart';

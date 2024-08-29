@@ -1,6 +1,6 @@
-import 'package:fitness_app_live/constants/color.dart';
-import 'package:fitness_app_live/screens/ProfilePage/profilePage.dart';
-import 'package:fitness_app_live/screens/homeScreen/workoutProgress.dart';
+import '../../constants/color.dart';
+import '../../screens/ProfilePage/profilePage.dart';
+import '../../screens/homeScreen/workoutProgress.dart';
 import 'package:flutter/material.dart';
 
 class HomepageNavbar extends StatefulWidget {

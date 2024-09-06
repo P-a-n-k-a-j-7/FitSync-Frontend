@@ -42,7 +42,7 @@ class DetailPageButton extends StatelessWidget {
               ),
             ),
           ),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: onTap,
           child: Container(

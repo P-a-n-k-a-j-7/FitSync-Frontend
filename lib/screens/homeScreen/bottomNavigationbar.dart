@@ -12,9 +12,9 @@ class HomepageNavbar extends StatefulWidget {
 
 class _HomepageNavbarState extends State<HomepageNavbar> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    workoutProgress(),
-    ProfilePage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const workoutProgress(),
+    const ProfilePage(),
   ];
 
     void _onItemTapped(int index) {

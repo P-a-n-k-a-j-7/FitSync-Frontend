@@ -13,7 +13,7 @@ class listwheelScrollView extends StatelessWidget {
         magnification: 1.3,
         useMagnifier: true,
         overAndUnderCenterOpacity: 0.19,
-        physics: FixedExtentScrollPhysics(),
+        physics: const FixedExtentScrollPhysics(),
         controller: FixedExtentScrollController(initialItem: items.length ~/ 2),
         itemExtent: 50,
         // onSelectedItemChanged: (index) {
@@ -23,7 +23,7 @@ class listwheelScrollView extends StatelessWidget {
         children: items.map((level) {
           return Text(
             level,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 30, color: PrimaryColor, fontWeight: FontWeight.bold),
           );
         }).toList());

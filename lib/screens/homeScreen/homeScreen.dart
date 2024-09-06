@@ -132,9 +132,9 @@ class _HomePageState extends State<HomePage> {
                               : Colors.black,
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 18),
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
                           child: Container(
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             child: Text(
                               category,
                               style: TextStyle(
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: size.height * 0.2,
                   child: ListView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
                       Container(
@@ -205,12 +205,12 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                Container(
+                SizedBox(
                   width: size.width,
                   height: size.height * 0.2,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     children: [
                       Container(
                         width: size.width * 0.5,
@@ -295,7 +295,7 @@ class ImageStack extends StatelessWidget {
                 ),
               ),
               Text(
-                "$time",
+                time,
                 style: TextStyle(
                   fontSize: size.width * 0.035,
                   color: PrimaryColor,

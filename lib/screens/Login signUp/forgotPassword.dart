@@ -80,7 +80,7 @@ class ForgotPassword extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               width: size.width * 0.9,
               alignment: Alignment.center,

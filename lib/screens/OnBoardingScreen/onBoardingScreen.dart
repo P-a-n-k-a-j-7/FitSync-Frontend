@@ -68,7 +68,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 width: size.width *0.5,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(208, 253, 62, 1),
+                  color: const Color.fromRGBO(208, 253, 62, 1),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Row(
@@ -86,7 +86,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     const Icon(
                       Icons.arrow_forward_ios,
                       color: Colors.black,
@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
             )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
 
             Positioned(
                 bottom: size.height * 0.03,
@@ -127,13 +127,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
         Positioned(
           bottom: 0,
-          child: Container(
+          child: SizedBox(
             height: size.height * 0.4,
             width: size.width,
             child: Center(
               child: Text(
                 text.toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,

@@ -25,7 +25,7 @@ class _WorkoutCategoriesState extends State<WorkoutCategories> {
             padding: AppPadding.horizontalPadding(context),
             child: Column(
               children: [
-                Text(
+                const Text(
                   "Workout Categories",
                   style: TextStyle(
                     color: Colors.white,
@@ -54,9 +54,9 @@ class _WorkoutCategoriesState extends State<WorkoutCategories> {
                               : Colors.black,
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 18),
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
                           child: Container(
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             child: Text(
                               category,
                               style: TextStyle(

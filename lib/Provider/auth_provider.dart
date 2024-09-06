@@ -1,14 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import '../provider/user_provider.dart';
 import 'package:http/http.dart' as http;
-
 import '../config.dart';
+import '../provider/user_provider.dart';
 
 class AuthProvider extends ChangeNotifier {
   final UserProvider userProvider;
   AuthProvider(this.userProvider);
+
   static Future<String?> loginUser(String email, String password) async {
     try {
       var reqBody = {"email": email, "password": password};
@@ -36,6 +35,40 @@ class AuthProvider extends ChangeNotifier {
     } catch (e) {
       print('Error logging in: $e');
       return null;
+    }
+  }
+
+  static Future<bool> registerUser(String name, String email, String password) async {
+    try {
+      var reqBody = {
+        "name": name,
+        "email": email,
+        "password": password,
+      };
+
+      var response = await http.post(
+        Uri.parse(register),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(reqBody),
+      );
+
+      if (response.statusCode == 200) {
+        var jsonResponse = jsonDecode(response.body);
+        if (jsonResponse['message'] == 'User registered successfully') {
+          print('Registration successful');
+          return true;
+        } else {
+          print('Registration failed: ${jsonResponse['message']}');
+          return false;
+        }
+      } else {
+        print('Server error: ${response.statusCode}');
+        print('Server error: ${response.body}');
+        return false;
+      }
+    } catch (e) {
+      print('Error registering: $e');
+      return false;
     }
   }
 }

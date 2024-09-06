@@ -31,7 +31,7 @@ class _HeightPageState extends State<HeightPage> {
         ),
         child: Column(
           children: [
-            DetailPageTitle(
+            const DetailPageTitle(
                 text: 'This helps us to create a personlized plan for you',
                 title: "What is your Height?",
                 color: Colors.white),

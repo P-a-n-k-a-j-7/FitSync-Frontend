@@ -1,14 +1,10 @@
-// ignore_for_file: avoid_print
 import '../../screens/OnBoardingScreen/onBoardingScreen.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:provider/provider.dart';
 import '../../Provider/auth_provider.dart';
-
 import '../../constants/color.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -38,7 +34,7 @@ class _SignUpState extends State<SignUp> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => OnBoardingScreen(),
+            builder: (context) => const OnBoardingScreen(),
           ),
         );
       } else {
@@ -51,10 +47,33 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  void registerUser() async {
+    if (_nameController.text.isNotEmpty &&
+        _emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      bool isRegistered = await AuthProvider.registerUser(
+        _nameController.text,
+        _emailController.text,
+        _passwordController.text,
+      );
+
+      if (isRegistered) {
+        print('Registration successful');
+        // Navigate to the next screen or show a success message
+      } else {
+        print('Registration failed');
+      }
+    } else {
+      setState(() {
+        _isNotValidate = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Stack(
@@ -89,16 +108,16 @@ class _SignUpState extends State<SignUp> {
                   },
                   style: TextButton.styleFrom(
                     foregroundColor:
-                        isLoginSelected ? PrimaryColor : Colors.white,
+                    isLoginSelected ? PrimaryColor : Colors.white,
                     textStyle: TextStyle(
                         shadows: isLoginSelected
                             ? const [
-                                Shadow(
-                                  blurRadius: 10.0,
-                                  color: Colors.black,
-                                  offset: Offset(5.0, 5.0),
-                                ),
-                              ]
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(5.0, 5.0),
+                          ),
+                        ]
                             : null),
                   ),
                   child: Text(
@@ -120,17 +139,17 @@ class _SignUpState extends State<SignUp> {
                   },
                   style: TextButton.styleFrom(
                     foregroundColor:
-                        isLoginSelected ? Colors.white : PrimaryColor,
+                    isLoginSelected ? Colors.white : PrimaryColor,
                     textStyle: TextStyle(
                       shadows: isLoginSelected
                           ? null
                           : const [
-                              Shadow(
-                                blurRadius: 10.0,
-                                color: Colors.black,
-                                offset: Offset(5.0, 5.0),
-                              ),
-                            ],
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black,
+                          offset: Offset(5.0, 5.0),
+                        ),
+                      ],
                     ),
                   ),
                   child: Text(
@@ -142,13 +161,13 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 const Expanded(child: SizedBox.shrink()),
-                //CircleAvatar
+                // CircleAvatar
                 isLoginSelected
                     ? const CircleAvatar(
-                        radius: 25,
-                        backgroundImage:
-                            AssetImage('assets/images/profile.jpg'),
-                      )
+                  radius: 25,
+                  backgroundImage:
+                  AssetImage('assets/images/profile.jpg'),
+                )
                     : const SizedBox.shrink(),
               ],
             ),
@@ -185,13 +204,13 @@ class _SignUpState extends State<SignUp> {
                 },
                 children: [
                   // Login Page
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextField(
                           controller: _emailController,
+                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Email",
                             hintStyle: TextStyle(
@@ -215,6 +234,7 @@ class _SignUpState extends State<SignUp> {
                           controller: _passwordController,
                           obscureText: true,
                           cursorColor: Colors.grey,
+                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(
@@ -238,7 +258,8 @@ class _SignUpState extends State<SignUp> {
                           children: [
                             TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/forgotpassword');
+                                Navigator.pushNamed(
+                                    context, '/forgotpassword');
                               },
                               child: const Text(
                                 "Forgot Password ?",
@@ -302,7 +323,6 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  // _login();
                                   loginUser();
                                 },
                                 child: const Row(
@@ -327,20 +347,27 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ],
                         ),
-                        SizedBox(height: size.height * 0.04),
+                        SizedBox(height: size.height * 0.03),
+                        if (_isNotValidate)
+                          Text(
+                            'Please fill in all fields',
+                            style: TextStyle(
+                              color: Colors.red[800],
+                              fontSize: 16,
+                            ),
+                          ),
                       ],
                     ),
                   ),
 
-                  // Sigtopn up Page
-                  //Name
-
+                  // Sign Up Page
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextField(
                           controller: _nameController,
+                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Name",
                             hintStyle: TextStyle(
@@ -362,6 +389,7 @@ class _SignUpState extends State<SignUp> {
                         SizedBox(height: size.height * 0.03),
                         TextField(
                           controller: _emailController,
+                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Email",
                             hintStyle: TextStyle(
@@ -384,6 +412,8 @@ class _SignUpState extends State<SignUp> {
                         TextField(
                           controller: _passwordController,
                           obscureText: true,
+                          cursorColor: Colors.grey,
+                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(
@@ -402,7 +432,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         ),
-                        const Spacer(),
+                        SizedBox(height: size.height * 0.075),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -415,7 +445,7 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  // Add Google sign-up logic
+                                  // Add Google sign-in logic
                                 },
                                 child: Image.asset(
                                   'assets/images/google.png',
@@ -434,7 +464,7 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  // Add Apple sign-up logic
+                                  // Add Apple sign-in logic
                                 },
                                 child: Image.asset(
                                   'assets/images/apple.png',
@@ -453,8 +483,7 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  // registerUser();
-                                  //print the user details
+                                  registerUser();
                                 },
                                 child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -478,7 +507,15 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ],
                         ),
-                        SizedBox(height: size.height * 0.055),
+                        SizedBox(height: size.height * 0.03),
+                        if (_isNotValidate)
+                          Text(
+                            'Please fill in all fields',
+                            style: TextStyle(
+                              color: Colors.red[800],
+                              fontSize: 16,
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -489,13 +526,5 @@ class _SignUpState extends State<SignUp> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
   }
 }

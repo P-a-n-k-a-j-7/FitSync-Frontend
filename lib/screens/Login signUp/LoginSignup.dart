@@ -70,6 +70,22 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  // Google Sign-In Logic
+  void signInWithGoogle() async {
+    var token = await AuthProvider.signInWithGoogle();
+    if (token != null) {
+      print('Google Sign-In successful');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const OnBoardingScreen(),
+        ),
+      );
+    } else {
+      print('Google Sign-In failed');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -285,7 +301,7 @@ class _SignUpState extends State<SignUp> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  // Add Google sign-in logic
+                                  signInWithGoogle();
                                 },
                                 child: Image.asset(
                                   'assets/images/google.png',
@@ -316,64 +332,36 @@ class _SignUpState extends State<SignUp> {
                             const Expanded(child: SizedBox.shrink()),
                             Container(
                               height: size.height * 0.06,
-                              width: size.width * 0.3,
+                              width: size.width * 0.35,
                               decoration: BoxDecoration(
                                 color: PrimaryColor,
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: TextButton(
-                                onPressed: () {
-                                  loginUser();
-                                },
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Login",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: Colors.black,
-                                    ),
-                                  ],
+                                onPressed: loginUser,
+                                child: const Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: size.height * 0.03),
-                        if (_isNotValidate)
-                          Text(
-                            'Please fill in all fields',
-                            style: TextStyle(
-                              color: Colors.red[800],
-                              fontSize: 16,
-                            ),
-                          ),
                       ],
                     ),
                   ),
-
-                  // Sign Up Page
+                  // Sign-up Page
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextField(
                           controller: _nameController,
-                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Name",
-                            hintStyle: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey[500],
-                            ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.grey.shade800,
@@ -389,13 +377,8 @@ class _SignUpState extends State<SignUp> {
                         SizedBox(height: size.height * 0.03),
                         TextField(
                           controller: _emailController,
-                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Email",
-                            hintStyle: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey[500],
-                            ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.grey.shade800,
@@ -413,13 +396,8 @@ class _SignUpState extends State<SignUp> {
                           controller: _passwordController,
                           obscureText: true,
                           cursorColor: Colors.grey,
-                          style: const TextStyle(color: Colors.white), // Set text color to white
                           decoration: InputDecoration(
                             hintText: "Password",
-                            hintStyle: TextStyle(
-                              fontSize: 18,
-                              color: Colors.grey[500],
-                            ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.grey.shade800,
@@ -432,90 +410,25 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         ),
-                        SizedBox(height: size.height * 0.075),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
+                        const Expanded(child: SizedBox.shrink()),
+                        Container(
+                          height: size.height * 0.06,
+                          width: size.width * 0.35,
+                          decoration: BoxDecoration(
+                            color: PrimaryColor,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: TextButton(
+                            onPressed: registerUser,
+                            child: const Text(
+                              "Sign up",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
                               ),
-                              child: TextButton(
-                                onPressed: () {
-                                  // Add Google sign-in logic
-                                },
-                                child: Image.asset(
-                                  'assets/images/google.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: size.width * 0.05),
-                            Container(
-                              height: size.height * 0.07,
-                              width: size.height * 0.07,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[800],
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: TextButton(
-                                onPressed: () {
-                                  // Add Apple sign-in logic
-                                },
-                                child: Image.asset(
-                                  'assets/images/apple.png',
-                                  color: Colors.white,
-                                  height: size.height * 0.05,
-                                ),
-                              ),
-                            ),
-                            const Expanded(child: SizedBox.shrink()),
-                            Container(
-                              height: size.height * 0.06,
-                              width: size.width * 0.3,
-                              decoration: BoxDecoration(
-                                color: PrimaryColor,
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: TextButton(
-                                onPressed: () {
-                                  registerUser();
-                                },
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Sign up",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: Colors.black,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: size.height * 0.03),
-                        if (_isNotValidate)
-                          Text(
-                            'Please fill in all fields',
-                            style: TextStyle(
-                              color: Colors.red[800],
-                              fontSize: 16,
                             ),
                           ),
+                        ),
                       ],
                     ),
                   ),

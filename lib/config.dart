@@ -1,3 +1,4 @@
 const url = 'https://fitsync-t2zw.onrender.com/';
-const register = 'https://fitsync-t2zw.onrender.com/register';
-const login = 'https://fitsync-t2zw.onrender.com/login';
+const register = '${url}register';
+const login = '${url}login';
+const googleLogin = '${url}auth/google';

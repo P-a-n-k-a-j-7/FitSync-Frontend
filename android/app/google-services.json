@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "168113650537",
+    "project_id": "stayfit-b2fc8",
+    "storage_bucket": "stayfit-b2fc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168113650537:android:10d687f196e1d4bf329bf8",
+        "android_client_info": {
+          "package_name": "com.android.StayFit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168113650537-v26gdqmie378jccd2k465tm9tdhf75eb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.StayFit",
+            "certificate_hash": "3e2ccfc6135826c21a5f3070e15a75d05780368b"
+          }
+        },
+        {
+          "client_id": "168113650537-87097joqmplei7bf2hlrs9p3k212u419.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpSGpET0lbJpSBsuqVCveGut_dVsskbCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168113650537-87097joqmplei7bf2hlrs9p3k212u419.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "168113650537-6ogun78j0cr035g1ov16hcf2l5vuuhng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitnessAppLive"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168113650537:android:f0c6069183aac343329bf8",
+        "android_client_info": {
+          "package_name": "com.example.StayFit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168113650537-87097joqmplei7bf2hlrs9p3k212u419.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpSGpET0lbJpSBsuqVCveGut_dVsskbCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168113650537-87097joqmplei7bf2hlrs9p3k212u419.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "168113650537-6ogun78j0cr035g1ov16hcf2l5vuuhng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitnessAppLive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
